@@ -63,7 +63,65 @@ const result = ObjectMapper.mapItem(sourceObject, mapping);
 
 ## Features
 
-WIP
+**Dot notation matching**
+
+```js
+ObjectMapper.mapItem (
+  {parent: {child: {value: 'bar'}}},
+  {result: 'parent.child.value'}
+);
+
+// {"result":"bar"}
+```
+
+**Query matching**
+
+```js
+ObjectMapper.mapItem (
+  {
+    children: [
+      {name: 'foo', value: 'bar'},
+      {name: 'baz', value: 'biz'}
+    ]
+  },
+  {result: 'children[name=baz].value'}
+);
+
+// {"result":"biz"}
+```
+
+**Data transformation**
+
+```js
+ObjectMapper.mapItem (
+  {
+    user: {
+      name:      'lennon',
+      firstname: 'john'
+    }
+  },
+  {
+    'result': [
+      'user.name',
+      name => name.toUpperCase(),
+      uppername => uppername.split('')
+    ]
+  }
+);
+
+// {"result":["L","E","N","N","O","N"]}
+```
+
+**Dot notation object conversion**
+
+```js
+ObjectMapper.mapItem (
+  {foo: 'bar'},
+  {'target.name.can.be.anything.0': 'foo'}
+);
+
+// {"target":{"name":{"can":{"be":{"anything":["bar"]}}}}}
+```
 
 ## Install
 
