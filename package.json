@@ -1,6 +1,6 @@
 {
-  "name": "object-mapper",
-  "version": "1.0.0",
+  "name": "@digitregroup/object-mapper",
+  "version": "1.0.1",
   "description": "Animorph your JS objects",
   "main": "index.js",
   "scripts": {
