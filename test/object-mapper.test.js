@@ -247,21 +247,15 @@ describe('ObjectMapper.mapItem', function () {
   it('Array of array', function () {
 
     const mapping = {
-      'result[]': ['user.1.picture[]', val => val]
+      'result[]': ['user.1.picture[]']
     };
 
     const data     = ObjectMapper.mapItem(sourceObject, mapping);
     const expected = {
       "result": [
-        [
-          "picture0.jpg"
-        ],
-        [
-          "picture1.png"
-        ],
-        [
+          "picture0.jpg",
+          "picture1.png",
           "picture2.gif"
-        ]
       ]
     };
 
