@@ -1,0 +1,46 @@
+{
+  "name": "object-mapper",
+  "version": "1.0.0",
+  "description": "Animorph your JS objects",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "nyc mocha ./test/**/*.js",
+    "prepare": "npm run prod",
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "hot": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/digitregroup/object-mapper.git"
+  },
+  "keywords": [
+    "etl",
+    "mapping",
+    "object",
+    "path",
+    "query",
+    "dot"
+  ],
+  "author": "DigitRE Group",
+  "license": "MIT",
+  "homepage": "https://bitbucket.org/digitregroup/object-mapper#readme",
+  "dependencies": {
+    "flat": "^4.1.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "cross-env": "^5.2.0",
+    "laravel-mix": "^4.0.14",
+    "mocha": "^6.0.2",
+    "nyc": "^13.3.0",
+    "vue-template-compiler": "^2.6.7"
+  },
+  "files": [
+    "/index.js"
+  ]
+}
