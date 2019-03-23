@@ -165,6 +165,22 @@ describe('ObjectMapper.findValue', function () {
   });
 
 });
+describe('ObjectMapper.arrayValue', function () {
+
+  it('Should work correctly with arrays of 9+', function () {
+
+    const sourceArray = flatten({entries: new Array(100).fill('test')});
+
+    const sourceKey = 'entries[]';
+    const targetKey = 'result[]';
+
+    const data = flatten.unflatten(ObjectMapper.arrayValue(sourceArray, sourceKey, targetKey));
+
+    return data.result.forEach(item => item.should.be.a('string'));
+
+  });
+
+});
 
 describe('ObjectMapper.mapItem', function () {
 

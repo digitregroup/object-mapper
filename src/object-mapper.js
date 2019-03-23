@@ -92,7 +92,7 @@ const ObjectMapper = class {
       .reduce((res, [key, val]) => {
 
         // If it ends with a number, it will be unflattened correctly already
-        if (key.match(/\.[0-9+]$/)) {
+        if (key.match(/\.[0-9]+$/)) {
           return Object.assign(res, {[key]: val});
         }
 
