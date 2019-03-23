@@ -1,6 +1,6 @@
 {
   "name": "@digitregroup/object-mapper",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Makes object-to-object transformation easy.",
   "source": "src/object-mapper.js",
   "main": "index.js",
@@ -11,7 +11,8 @@
     "test": "nyc mocha ./test/**/*.js",
     "prepare": "npm run prod",
     "prod": "microbundle",
-    "dev": "microbundle watch"
+    "dev": "microbundle watch",
+    "deploy": "npm publish --access public"
   },
   "repository": {
     "type": "git",
