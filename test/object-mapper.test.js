@@ -165,6 +165,7 @@ describe('ObjectMapper.findValue', function () {
   });
 
 });
+
 describe('ObjectMapper.arrayValue', function () {
 
   it('Should work correctly with arrays of 9+', function () {
@@ -177,6 +178,19 @@ describe('ObjectMapper.arrayValue', function () {
     const data = flatten.unflatten(ObjectMapper.arrayValue(sourceArray, sourceKey, targetKey));
 
     return data.result.forEach(item => item.should.be.a('string'));
+
+  });
+
+  it('Should work correctly when array in source but not in result', function () {
+
+    const sourceObject = {'names': [{'FirstName': 'Jacques'}]};
+
+    const sourceKey = 'names[].FirstName';
+    const targetKey = 'result.names[].name';
+
+    const data = ObjectMapper.arrayValue(flatten(sourceObject), sourceKey, targetKey);
+
+    return flatten.unflatten(data).result.names[0].name.should.be.a('string');
 
   });
 
@@ -269,9 +283,9 @@ describe('ObjectMapper.mapItem', function () {
     const data     = ObjectMapper.mapItem(sourceObject, mapping);
     const expected = {
       "result": [
-          "picture0.jpg",
-          "picture1.png",
-          "picture2.gif"
+        "picture0.jpg",
+        "picture1.png",
+        "picture2.gif"
       ]
     };
 

@@ -93,11 +93,15 @@ const ObjectMapper = class {
 
         // If it ends with a number, it will be unflattened correctly already
         if (key.match(/\.[0-9]+$/)) {
-          return Object.assign(res, {[key]: val});
+          return {...res, [key]: val};
         }
 
         // If it doesn't end with a number, push it into a new array
-        return Object.assign(res, ({[key]: (res[key] || []).concat(val)}));
+        if (sourceKey.match(/\[]$/)) {
+          return Object.assign(res, ({[key]: (res[key] || []).concat(val)}));
+        }
+
+        return {...res, [key]: val};
 
       }, {});
 

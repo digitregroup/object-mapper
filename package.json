@@ -1,6 +1,6 @@
 {
   "name": "@digitregroup/object-mapper",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Makes object-to-object transformation easy.",
   "source": "src/object-mapper.js",
   "main": "index.js",
