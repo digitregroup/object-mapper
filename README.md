@@ -8,6 +8,14 @@ Makes object-to-object transformation easy.
 ![](https://david-dm.org/digitregroup/object-mapper/status.svg)
 ![](https://david-dm.org/digitregroup/object-mapper/dev-status.svg)
 
+## Install
+
+```js
+yarn add @digitregroup/object-mapper
+
+const ObjectMapper = require('@digitregroup/object-mapper');
+```
+
 ## Quick example
 
 ```js
@@ -122,10 +130,6 @@ ObjectMapper.mapItem (
 
 // {"target":{"name":{"can":{"be":{"anything":["bar"]}}}}}
 ```
-
-## Install
-
-`npm install --save @digitregroup/object-mapper`
 
 ## Dependencies
 
