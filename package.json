@@ -30,7 +30,7 @@
   "license": "MIT",
   "homepage": "https://bitbucket.org/digitregroup/object-mapper#readme",
   "dependencies": {
-    "flat": "^4.1.0"
+    "flat": "^5.0.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",
