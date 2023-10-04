@@ -54,8 +54,6 @@ const ObjectMapper = class {
         }
 
       })
-      // We remove empty and null values
-      .filter(data => Object.values(data).filter(val => null !== val && '' !== val).length)
       .reduce((r, n) => Object.assign(r, n), {}));
   }
 
