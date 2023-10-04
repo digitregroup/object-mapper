@@ -7,9 +7,12 @@ const ObjectMapper = class {
    * Low-level item mapping method
    * @param {object} sourceItem Item to map
    * @param {object} mapping Mapping rules
+   * @param {object} options Additional mapping options
+   * @param {boolean} options.keepNullValues Set to true to keep NULL or '' values in the mapped object
    * @returns {object} mapped item
    */
-  static mapItem(sourceItem, mapping) {
+  static mapItem(sourceItem, mapping, options = {}) {
+    const { keepNullValues = false } = options;
     const flatItem = flatten(sourceItem);
 
     return unflatten(Object.entries(mapping)
@@ -54,6 +57,8 @@ const ObjectMapper = class {
         }
 
       })
+      // We remove empty and null values (unless the {keepNullValues} option is set to true)
+      .filter(data => keepNullValues || Object.values(data).filter(val => ![null, ''].includes(val)).length)
       .reduce((r, n) => Object.assign(r, n), {}));
   }
 
