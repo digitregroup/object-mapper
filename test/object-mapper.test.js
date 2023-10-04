@@ -241,7 +241,7 @@ describe('ObjectMapper.mapItem', function () {
         val => val.toLowerCase(),
         val => ({blue: '#0000FF'})[val]
       ],
-      'paul.pictures.sort_desc':       ['user.1.picture[]', val => val.sort(() => 1)],
+      'paul.pictures.sort_desc':       ['user.1.picture[]', val => val.sort().reverse()],
     };
 
     const expected = {
@@ -291,6 +291,25 @@ describe('ObjectMapper.mapItem', function () {
 
     return data.should.eql(expected);
 
+  });
+
+  it('should keep null or empty values with the keepNullValues option', () => {
+    const sourceObject = {
+      i_am_null: null,
+      i_am_empty: '',
+    }
+    const mapping = {
+      'i_am_still_null': 'i_am_null',
+      'i_am_still_empty': 'i_am_empty',
+    };
+    const dataWithoutNullValues = ObjectMapper.mapItem(sourceObject, mapping);
+    const dataWithNullValues = ObjectMapper.mapItem(sourceObject, mapping, { keepNullValues: true }); // force the null or '' values to stay
+
+    dataWithoutNullValues.should.eql({}); // no null or '' values kept by default
+    dataWithNullValues.should.eql({
+      i_am_still_null: null,
+      i_am_still_empty: '',
+    }); // null / '' values kept with the { keepNullValues: true } parameter
   });
 
 });
